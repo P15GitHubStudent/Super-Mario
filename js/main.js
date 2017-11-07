@@ -62,6 +62,8 @@ player.inCamera
             
         
             this.load.spritesheet('fire','assets/fire.png',8,8);
+        
+           questionBlock_preload();
             
 		}   
 
@@ -119,6 +121,8 @@ player.inCamera
     
             
             
+            
+            
             map.createFromTiles(1,null,'coin','stuff',coins);
 
             
@@ -142,6 +146,9 @@ player.inCamera
 
             
             create_fire_group();
+            
+            
+            questionBlock_init();
             
             
             
@@ -211,7 +218,8 @@ player.inCamera
             
             //init our player fire bullets here 
             init_bullets();
-        
+                
+            init_questionBlock();
             
                 
 		}   
@@ -298,6 +306,8 @@ player.inCamera
     
             player_events();
             
+            update_questionBlock();
+            
 		}
 
 
@@ -375,5 +385,29 @@ player.inCamera
                 
 			
 		}
+
+const QUESTION_BLOCK='questionBlock';
+
+function questionBlock_preload(){
+     this.game.load.atlasJSONHash('questionBlock','assets/QuestionBlock.png','assets/QuestionBlock.json');
+}
+
+
+function questionBlock_init(){
+
+    questionGroup=game.add.group();
+    questionGroup.enableBody=true;
+
+    map.createFromTiles(9, null, 'questionBlock', 'stuff', questionGroup);
+    
+    questionGroup.callAll('animations.add', 'animations', 'flash',Phaser.Animation.generateFrameNames('questionBlock',1,3),
+             2, true);
+
+             questionGroup.callAll('animations.play','animations','flash');
+}
+
+function update_questionBlock(){
+
+}
 
 
