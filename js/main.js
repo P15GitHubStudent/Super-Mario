@@ -390,6 +390,7 @@ function questionBlock_preload(){
 
 function questionBlock_init(){
 
+	
     questionGroup=game.add.group();
     questionGroup.enableBody=true;
 
@@ -399,6 +400,8 @@ function questionBlock_init(){
              2, true);
 
              questionGroup.callAll('animations.play','animations','flash');
+	
+	console.log('QUESTION_BLOCK INIT');
 }
 
 function update_questionBlock(){
