@@ -1,9 +1,4 @@
-﻿/*
-Destroying sprite
-sprite.destroy()
-game.camera.view
-player.inCamera
-*/
+
 
 
 
