@@ -1,0 +1,44 @@
+{"frames": {
+
+"walk1":
+{
+	"frame": {"x":0,"y":0,"w":20,"h":24},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":20,"h":24},
+	"sourceSize": {"w":20,"h":24}
+},
+"walk2":
+{
+	"frame": {"x":20,"y":0,"w":21,"h":24},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":21,"h":24},
+	"sourceSize": {"w":21,"h":24}
+},
+"dead1":
+{
+	"frame": {"x":41,"y":0,"w":22,"h":24},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":22,"h":24},
+	"sourceSize": {"w":22,"h":24}
+},
+"dead2":
+{
+	"frame": {"x":63,"y":0,"w":20,"h":23},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":20,"h":23},
+	"sourceSize": {"w":20,"h":23}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "ghosts.png",
+	"format": "RGBA8888",
+	"size": {"w":83,"h":24},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:216e8d0d6d8d15e7c2768a2f25a939a2:68c63e172390e885e279ef9af809cb9a:9ad669a92663afd107fa55365c249638$"
+}
+}
