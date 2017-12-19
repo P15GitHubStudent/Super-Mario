@@ -1,5 +1,5 @@
 const endOfLvlID=51;
-const inviWallsID=5;
+const inviWallsID=51; //51 or 5 
 
 function init_invisibleWalls(){
 
@@ -10,7 +10,7 @@ function init_invisibleWalls(){
     
     endOfLvl=game.add.group();
     endOfLvl.enableBody=true;
-    map.createFromTiles(endOfLvlID,null,'inviWall','stuff',endOfLvl);
+    map.createFromTiles(endOfLvlID,null,'inviWall','endlevel',endOfLvl);
     endOfLvl.alpha=0.01;
 }
 

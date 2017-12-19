@@ -29,7 +29,7 @@
        if(playerhearts>MAX_PLAYER_HEARTS){
            playerhearts=MAX_PLAYER_HEARTS;
        }
-       
+       pickShroom.play();
        shroom.kill();
    }        
 
@@ -49,39 +49,27 @@ function hurtplayer(){
 
     if(hurtable){
         
-        player.frame = 6;
         player.animations.stop();
         playerhearts-=1;
         if(playerhearts<0)playerhearts=0;
-       
-        
-        player.alpha=0.5;
-    
-        
-        var pushBack=800;
-        
-        game.time.events.add(Phaser.Timer.SECOND/3,function(){
-            
-             player.body.velocity.x+=player.goesRight ? -pushBack:pushBack;
-        
-        });
-        
-        game.time.events.add(Phaser.Timer.SECOND , function(){
-            
-             player.alpha=1;
-        
+
+        game.time.events.add(Phaser.Timer.SECOND/2 , function(){
+
             if (playerhearts<=0){
                     player.body.enable = false;
-                    game.paused=true;
-                    
+                    gameMusic.stop();
+                    game.state.start(GAME_OVER_STATE,true,false,this.score);            
                  }
-    
-          hurtable=true;
-       
+
+                hurtable=true;
+
+            //player.frame       
     });
      
-        
-        hurtable=false;
+    player.x=16;
+    player.y=game.world.height-48;
+    player.frame=4;   
+    hurtable=false;
     
     }
 }

@@ -1,7 +1,5 @@
 
-//FORTONO TIS PISTES EDO ! 
-
-var mapNames=['super_mario_map','super_mario_map3']; 
+var mapNames=['super_mario_map','super_mario_map3','super_maio_map4'];
 const TILE_WIDTH=16;
 const TILE_HEIGHT=16;
 
@@ -31,9 +29,6 @@ function createMap(lvl){
     this.map =this.game.add.tilemap('level');
     this.map.addTilesetImage('tiles', 'tiles');
     this.map.setCollisionBetween(7, 24, true, 'solid');
-    //this.layerinvWalls=map.createLayer('invisibleWalls');
-    //this.layerinvWalls.visible=false;
-    //this.mapTeleportLayer=map.createLayer('teleport');
     this.layer = map.createLayer('solid');
     this.layer.resizeWorld();
     this.map.createLayer('background');

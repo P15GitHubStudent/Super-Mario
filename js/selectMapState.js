@@ -16,8 +16,8 @@ selectMapState.prototype.create=function(){
     game.add.sprite(0,0,'marioBG');
 
     //DILOSEIS METABLITON 
-    var WCX=game.world.centerX;
-    var WCY=game.world.centerY;
+    var WCX=400;
+    var WCY=300;
     const MAX_MAPS=5; //μέγιστος αριθμος πιστών !
     const MAX_RENDER_ON_X=4 // megistos arithmos tiles pou mporei na kanei render ston aksonaX
 
@@ -33,6 +33,7 @@ selectMapState.prototype.create=function(){
           levelUnlocked[c]=false;
       }
 
+      
     levelUnlocked[0]=true;
     levelUnlocked[1]=true;
 
@@ -93,7 +94,6 @@ function renderSelectMapBlocks(numOnRenderX,totalofBlocks){
         game.time.events.add(Phaser.Timer.SECOND * 0.4 ,function(){
              sprite.alpha=1;
              if(levelUnlocked[sprite.nameId]){
-                this.game.scale.setGameSize(256,240);
                 this.game.state.start(PLAY_STATE,true,false,sprite.nameId);
             }
         });           

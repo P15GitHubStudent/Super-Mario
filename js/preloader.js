@@ -1,5 +1,4 @@
 
-
 var PreloadState={
 
     preload:function(){
@@ -17,24 +16,30 @@ var PreloadState={
 					16);
             
             game.load.spritesheet('heart','assets/lives.png'); 
-            
-            //φόρτωση ηχων/μουσικής
-            
-            game.load.audio('GMusic',['audio/bgm.mp3','audio/bgm.ogg']);
+
+            game.load.audio('GMusic',['audio/smb_main-theme.mp3']);
             
             game.load.audio('SCoin','audio/coin.wav');
             
             game.load.audio('Sjump','audio/jump.wav');
             
             game.load.audio('Sstomp','audio/stomp.wav');
+
+            game.load.audio('collectMushroom',['audio/mushroomSpawn.mp3','audio/mushroomSpawn.ogg']);
+            
+           // game.load.audio('kissP','audio/kissPrincess.wav');
+
+           game.load.audio('bonus',['audio/bonus.mp3','audio/bonus.ogg']);
+
+           game.load.audio('MarioDeath',['audio/MarioDeath.mp3','audio/MarioDeath.ogg']);
+
+           game.load.audio('kissP','audio/kiss1.wav');
             
             game.load.spritesheet('lives','assets/lives.png',9,8); 
 
             game.load.image('marioBG', 'assets/cloudBG.jpeg');
 
             game.load.image('redButton','assets/redButton.png');
-
-           // game.load.spritesheet('lockedLevel','assets/lockedLevel.png',280,64);
 
            game.load.spritesheet('levels','assets/levels.png',64,64);
 
@@ -62,7 +67,8 @@ var PreloadState={
         game.scale.pageAlignVertically = true
         game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
         cursors = game.input.keyboard.createCursorKeys();
-        game.state.start(MENU_STATE);
+       game.state.start(MENU_STATE);
+       //game.state.start(GAME_OVER_STATE,true,false,100);
     }
     ,
     update:function(){

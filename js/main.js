@@ -1,21 +1,19 @@
-﻿/*
-MAIN.js
-DHMIOURGIA TON STATE MAS KAI KSEKINIMA  TOU PRELOADER STATE 
-O PRELOADER STATE ANALAMBANEI NA FORTOSEI TOUS POROUS GIA EMAS KATI SAN SOUND,TEXTURE MANAGER!
-*/
-  
-        //KATHOLIKES METABLITES EDO !
+﻿
         var playerBonus=false;
         const PLAY_STATE='PlayState';
         const PRELOAD_STATE='PreloadState';
         const MENU_STATE='MenuState';
         const SELECT_MAP_STATE='selectMapState';
+        const WON_GAME_STATE='WonGameState';
+        const MAX_NUM_MAPS=2;
+        const GAME_OVER_STATE='GameOver';
 
-
-
-	    var game = new Phaser.Game(800,600, Phaser.CANVAS, '');
+	 var game = new Phaser.Game(800,600, Phaser.CANVAS, '');
         game.state.add('PlayState',PlayState);
         game.state.add('PreloadState',PreloadState);
         game.state.add('MenuState',MenuState);
         game.state.add('selectMapState',selectMapState);
+        game.state.add('WonGameState',WonGame);
+        game.state.add('GameOver',GameOver);
         game.state.start('PreloadState'); 
+

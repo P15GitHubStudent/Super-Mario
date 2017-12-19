@@ -7,9 +7,10 @@ var MenuState=function(game){
 
     MenuState.prototype.create=function(){
 
+        game.scale.setGameSize(800,600);
+
         actionClick=function()
         {
-           game.scale.setGameSize(256,240);
            game.state.start(PLAY_STATE,true,false,1); //to 2 deixnei apo pia pista tha ksekinisoume!
         }
 
@@ -20,12 +21,12 @@ var MenuState=function(game){
         game.add.sprite(0,0,'marioBG'); 
         game.stage.backgroundColor = '#cfcf23d';
 
-        var WCX=game.world.centerX;
-        var WCY=game.world.centerY;
+        var WCX=400;
+        var WCY=300;
         const MAX_OPTIONS=3;
         const FONT_SIZE=20;
 
-       gameText=game.add.text(game.world.centerX-95,0,' Choose Map',{ fontSize: '22px', fill: '#000' });
+       gameText=game.add.text(WCX,0,' Choose Map',{ fontSize: '22px', fill: '#000' });
        
        button=new Array(MAX_OPTIONS);
        text=new Array(MAX_OPTIONS);

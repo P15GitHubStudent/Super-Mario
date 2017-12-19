@@ -27,12 +27,15 @@ function update_princess(){
             mprincess.body.velocity.x=0;
             princess.animations.play('kiss');
             princess.kissed=true;
-            game.camera.fade('#000000');
-            game.camera.onFadeComplete.addOnce(function () {
-                levelEnded=false;
-                game.state.start(PLAY_STATE,true, false,1);
-            }, this);
+            gameMusic.stop();
+            pKissSound.play();
+            if(princess.kissed){
+                game.camera.fade('#000000');
+                game.camera.onFadeComplete.addOnce(function () {
+                    levelEnded=false;
+                    game.state.start(PLAY_STATE,true, false,);
+                }, this);
+               }
         });
     }
 }
-
