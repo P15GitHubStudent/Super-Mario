@@ -11,7 +11,7 @@
         const BOOTSTATE='bootState';
 
         var game = new Phaser.Game(800,600, Phaser.CANVAS, '');
-        game.state.add('bootState',BootState);
+        //game.state.add('bootState',BootState);
         game.state.add(NEXT_MAP_LOADER_STATE,NextMapLoader);
         game.state.add('PlayState',PlayState);
         game.state.add('PreloadState',PreloadState);
@@ -19,5 +19,6 @@
         game.state.add('selectMapState',selectMapState);
         game.state.add('WonGameState',WonGame);
         game.state.add('GameOver',GameOver);
-        game.state.start('bootState'); 
+        game.state.start('PreloadState');
+       // game.state.start('bootState'); 
 
