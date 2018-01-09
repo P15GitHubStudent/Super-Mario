@@ -14,7 +14,7 @@ function init_questionBlock(){
     questionGroup.enableBody=true;
 
 
-    map.createFromTiles(QUESTION_BLOCK_ID, null, 'questionBlock', 'stuff', questionGroup);
+    map.createFromTiles(QUESTION_BLOCK_ID, null, 'questionBlock', 'solid', questionGroup);
     
     questionGroup.setAll('body.immovable',true);
     questionGroup.setAll('body.moves',false);
@@ -27,7 +27,7 @@ function init_questionBlock(){
 
 }
 
-function questionBoxOverlap(player,questionBoxSprite){
+function questionBoxCollision(player,questionBoxSprite){
 
     if(player.body.touching.up && questionBoxSprite.name!='O'){    
 
@@ -37,12 +37,10 @@ function questionBoxOverlap(player,questionBoxSprite){
 
         shroom_create(questionBoxSprite.x,questionBoxSprite.y-15);
     }
-    
-    game.physics.arcade.collide(player,questionBoxSprite);
 
 }
 
 //check overlap with the player ! 
 function update_questionBlock(){
-    game.physics.arcade.overlap(player,questionGroup,questionBoxOverlap);
+    game.physics.arcade.collide(player,questionGroup,questionBoxCollision);
 }

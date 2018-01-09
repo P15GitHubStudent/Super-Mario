@@ -1,9 +1,8 @@
 
-//FORTONO TIS PISTES EDO ! 
-
-var mapNames=['super_mario_map','super_mario_map3']; 
+var mapNames=['super_mario_map1','super_mario_map2'];
 const TILE_WIDTH=16;
 const TILE_HEIGHT=16;
+var load_next_map=false;
 
 //apla fortonoei ena map apo to paixnidi mas ! 
 function LoadLevel(lvl){
@@ -11,14 +10,13 @@ function LoadLevel(lvl){
     Phaser.Tilemap.TILED_JSON);
 }
 
-//kanei restart to game mas :D mporei na mou parsousiasi problima alla tha doume !
 function RestartGame(){ 
     this.game.state.start(PLAY_STATE,true,false,PlayState.prototype.getLevel());//start->restart
 }
 
-//fortonei to epomeno level tou paixnidiou mas !
 function loadNextMap(){
-    this.game.state.start(PLAY_STATE,true,false,PlayState.prototype.getNextLevel());
+    var nextLevel=PlayState.prototype.getNextLevel();
+    this.game.state.start(PLAY_STATE,true,false,nextLevel);
 }
 
 /*
@@ -31,9 +29,6 @@ function createMap(lvl){
     this.map =this.game.add.tilemap('level');
     this.map.addTilesetImage('tiles', 'tiles');
     this.map.setCollisionBetween(7, 24, true, 'solid');
-    //this.layerinvWalls=map.createLayer('invisibleWalls');
-    //this.layerinvWalls.visible=false;
-    //this.mapTeleportLayer=map.createLayer('teleport');
     this.layer = map.createLayer('solid');
     this.layer.resizeWorld();
     this.map.createLayer('background');

@@ -1,13 +1,10 @@
-    
-// /*
-// Destroying sprite
-// sprite.destroy()
-// game.camera.view
-// player.inCamera
-// BUG ME TIS SFAIRES BONUS OTAN EIXES PAREI PRIN KAI TIS KSANAPAREIS DEN FENETAI NA EXEIS TA DEUTEROLEPTA POU EIXAN 
 
-// NA FTIAXNO FOTIA TIN STIGMI POU PATITHIKE ! 
-// NA TIN KATASTREFO OTAN BGEI EKTOS ORION PISTAS H DEN TIN BLEPEI I CAMERA MAS ! 
+
+const FIRE_ID=3;
+
+    function preload_Fire(){
+        this.game.load.atlasJSONHash('fire','assets/FireBall/fireball.png','assets/FireBall/fireball.json');
+    }
 
      function init_fire(){
          
@@ -15,22 +12,17 @@
             firebonus=null;
             firebonus=game.add.group();
             firebonus.enableBody=true;
-            map.createFromTiles(3,null,'fire','stuff',firebonus)
+            map.createFromTiles(FIRE_ID,null,'fire','stuff',firebonus)
             firebonus.physicsBodyType=Phaser.Physics.ARCADE;
-            firebonus.callAll('animations.add', 'animations', 'spinfire',
-				[ 0, 1, 2, 3], 3, true);
-            
-            
-            
-			firebonus.callAll('animations.play', 'animations', 'spinfire');   
-         
-         
+            firebonus.callAll('animations.add','animations','fireHit',Phaser.Animation.generateFrameNames('FireBallHit',0,16),1,true);
+            firebonus.callAll('animations.add', 'animations','spinfire',
+            Phaser.Animation.generateFrameNames('spin',1,4), 3, true);
+			firebonus.callAll('animations.play', 'animations','spinfire');           
             fireshoots=game.add.group();
             fireshoots.enableBody=true;
             fireshoots.physicsBodyType=Phaser.Physics.ARCADE;
             fireshoots.setAll('anchor.x', 0.5);
             fireshoots.setAll('anchor.y',1);   
-         
             bulletTime=0;
             updateBulletTime=0;
          
@@ -58,6 +50,10 @@
          
          game.physics.arcade.overlap(player, firebonus, pick_fireball);
          game.physics.arcade.overlap(fireshoots,enemiesGroup,fire_shoots_enemy_overlap);
+    
+         /////////
+      
+
      
      }
 
@@ -80,9 +76,9 @@
 
       if(this.map.getTileWorldXY(fireshoot.x, fireshoot.y,16,16, 'solid')) 
       { 
-          resetBullet(fireshoot);
+            resetBullet(fireshoot);
       }
-  }
+}
 
 
     function resetBullet(fireshoot){
@@ -90,14 +86,19 @@
         fireshoot.kill();        
     }
 
-    function preload_Fire(){
-         game.load.spritesheet('fire','assets/fire.png',8,8);
-    }
+    
     
    
     function update_fireShoots(){
     
         handle_fire_collisions(goombas);
+
+        game.physics.arcade.overlap(piranaPipes,firebonus,function(pipe,fire){
+            console.log("Bullets Destuction :D");
+            resetBullet(fire);
+            });
+
+
 
             var fireArray=fireshoots.children;
             var fireArrayLength=fireshoots.children.length;
@@ -141,7 +142,7 @@
                         bullet.body.velocity.x=-300;
                     }
                  
-                bulletTime=bulletTime+250; //150
+                bulletTime=game.time.now+700;
             }
             else{   
             }  
@@ -149,17 +150,9 @@
 
     }
 
-FireBullet=function(game,x,y,direction,speed){
-    Phaser.Sprite.call(this,game,x,y,"fireBullet"); //dimiourgoume ena sprite !!! ?
-    game.physics.enable(this,Phaser.Physics.ARCADE); //to dinoume physics! 
-    this.xSpeed=direction * speed; //tou thetoume tin taxitita
-}
+    
 
-FireBullet.prototype=Object.create(Phaser.Sprite.prototype);
-FireBullet.prototype.constructor=FireBullet;
- FireBullet.prototype.update=function(){
-     //game.physics.overlap(this);
- }
+
 
 
 
