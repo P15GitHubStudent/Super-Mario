@@ -13,6 +13,9 @@ NextMapLoader.prototype.init=function(curLevel,playerScore){
 
 NextMapLoader.prototype.create=function(){
             princessSpawned=false;
+            hurtable=true;
+            levelEnded=false;
+            
             if(this.curLevel+1>=MAX_LEVELS){
                 this.game.state.start(WON_GAME_STATE,true,false,this.playerScore);
             }

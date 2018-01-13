@@ -20,5 +20,3 @@
         game.state.add('WonGameState',WonGame);
         game.state.add('GameOver',GameOver);
         game.state.start('PreloadState');
-       // game.state.start('bootState'); 
-

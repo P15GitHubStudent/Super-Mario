@@ -42,9 +42,7 @@ var MenuState=function(game){
 
     };
     
-
-    MenuState.prototype.update=function(){
-                
+    MenuState.prototype.update=function(){       
     };
 
 

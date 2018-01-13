@@ -2,6 +2,7 @@
 const MAX_PLAYER_HEARTS=7;
 
 var FATHER=true; // admin :) 
+var restart=false;
 
 
 function preload_Player(){

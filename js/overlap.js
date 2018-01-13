@@ -67,8 +67,10 @@ function hurtplayer(){
             //player.frame       
     });
      ////////////////////////////////////////////////////////
-    player.x=16;
-    player.y=game.world.height-48;
+ //   player.x=16;
+  //  player.y=game.world.height-48;
+    console.log('RESTARTING MAP');
+  game.state.start(NEXT_MAP_LOADER_STATE,true,false,this.level-1,score);
     ////////////////////////////////////
     player.frame=4;   
     hurtable=false;
