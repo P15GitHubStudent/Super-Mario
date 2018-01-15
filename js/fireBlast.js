@@ -50,11 +50,7 @@ const FIRE_ID=3;
          
          game.physics.arcade.overlap(player, firebonus, pick_fireball);
          game.physics.arcade.overlap(fireshoots,enemiesGroup,fire_shoots_enemy_overlap);
-         //this should work !!! 
-         game.physics.arcade.overlap(fireshoots,piranaPipes,function(fire,pipe){
-            //console.log("Bullets Destuction :D");
-            resetBullet(fire);
-            });
+    
          /////////
       
 
@@ -96,6 +92,13 @@ const FIRE_ID=3;
     function update_fireShoots(){
     
         handle_fire_collisions(goombas);
+
+        game.physics.arcade.overlap(piranaPipes,firebonus,function(pipe,fire){
+            console.log("Bullets Destuction :D");
+            resetBullet(fire);
+            });
+
+
 
             var fireArray=fireshoots.children;
             var fireArrayLength=fireshoots.children.length;
