@@ -1,10 +1,12 @@
 
 
+    var developer;
+
 	function coinOverlap(player, coin) {
             score+=1;
             gameText.text=score;
             SCoin.play();
-			coin.kill();   
+            coin.kill();   
         }
 
     function plantOverlap(player,plant){
@@ -42,24 +44,23 @@
  
 function hurtplayer(){
 
-    //if(FATHER===true)return;
-
-    if(levelEnded){
+    
+    if(levelEnded ||developer){
         return;
     }
 
+
     if(hurtable){
-        
+        console.log('YOU LOST OH NO !');
         player.animations.stop();
-        playerhearts-=1;
+        playerhearts--;
         if(playerhearts<0)playerhearts=0;
-
         game.time.events.add(Phaser.Timer.SECOND/2 , function(){
-
-            if (playerhearts<=0){
+            console.log('MPAINO EDO GIATI EIMAI KALO PAIDI !!');
+            if (playerhearts==0){
                     player.body.enable = false;
                     gameMusic.stop();
-                    game.state.start(GAME_OVER_STATE,true,false,this.score);            
+                 //   game.state.start(GAME_OVER_STATE,true,false,this.score);            
                  }
 
                 hurtable=true;
@@ -67,12 +68,19 @@ function hurtplayer(){
             //player.frame       
     });
      ////////////////////////////////////////////////////////
-    player.x=16;
-    player.y=game.world.height-48;
+ //   player.x=16;
+  //  player.y=game.world.height-48;
+   // game.state.start(NEXT_MAP_LOADER_STATE,true,false,(this.level-1),score);
+    //RestartGame();
     ////////////////////////////////////
+
+    //game.state.start(NEXT_MAP_LOADER_STATE,true,false,(this.level-1),score);
+    
+    restartGame=true;
+
     player.frame=4;   
     hurtable=false;
-    
+
     }
 }
 
@@ -93,8 +101,8 @@ function goombaOverlap(player, goomba) {
                     addBonus();
 
                     game.time.events.add(Phaser.Timer.SECOND * 3 , function() {
-                        
-                        goomba.kill();             
+
+                    goomba.kill();             
                         
                         });   
 			} else {

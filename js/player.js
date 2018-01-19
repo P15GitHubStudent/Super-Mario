@@ -10,7 +10,7 @@ function preload_Player(){
 
     function init_Player(){
         hurtable=true;
-        playerhearts=5;
+       // playerhearts=5;
         freezeplayer=false;
         player=game.add.sprite(16,game.world.height-48,'Allien');
         player.anchor.setTo(0.5);  //και θέτουμε το origin στο κέντρο του!    
@@ -56,6 +56,11 @@ function preload_Player(){
             if (game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR))
             {
                   fire_shoot();
+            
+            }
+
+            if(game.input.keyboard.isDown(Phaser.Keyboard.ESCAPE)){
+                developer=true;
             }
         
         handle_collisions();

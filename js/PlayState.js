@@ -1,4 +1,6 @@
 const MAX_LEVELS=2;
+var restartGame=false;
+var playerhearts=4;
 
 var PlayState=function(game){
     this.pauseGame=false;
@@ -36,7 +38,9 @@ PlayState.prototype.create=function(){
       score=0;
       gameText=null;
       gameMusic=null;
-      playerhearts=5;
+      //playerhearts=5;
+
+      developer=true;
 
       gameMusic=game.add.audio('GMusic');
       
@@ -58,6 +62,9 @@ PlayState.prototype.create=function(){
       gameText=game.add.text(147,0,'0',{ fontSize: '11px', fill: '#ff1' });
       
       gameText.fixedToCamera=true;
+
+      debuggingText=game.add.text(0,15,'',{ fontSize: '10px', fill: '#ff1' });
+      debuggingText.fixedToCamera=true;
 
        init_invisibleWalls();
 
@@ -81,17 +88,45 @@ PlayState.prototype.create=function(){
 
        init_teleports();
 
-       console.log('PS->END_CREATE');
+       developer=false;
+
+       hurtable=true;
+
+       levelEnded=false;
+
 };
 
-
 PlayState.prototype.update=function(){
+
+    /*
+    if(game.input.keyboard.isDown(Phaser.Keyboard.ESCAPE)){
+        developer=!developer;
+    }
+    */
 
     if(load_next_map){
         load_next_map=false;
         princessSpawned=false;
         game.state.start(NEXT_MAP_LOADER_STATE,true,false,this.level,score);
     }
+    if(restartGame){
+        restartGame=false;
+        gameMusic.stop();
+        game.state.start(PLAY_STATE,true,false,this.level);
+    }
+
+    if(playerhearts==0){
+        gameMusic.stop();
+        playerhearts=5;
+        game.state.start(GAME_OVER_STATE,true,false,score);
+    }
+
+    developer=false;
+
+    if(!developer){
+        debuggingText.text=developer ? ' You are not in Developer Mode Press Escape To Disable':'Developer Mode Disabled Press Escape To Enable';
+    }
+
 
    update_piranas();
 

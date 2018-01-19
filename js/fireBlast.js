@@ -50,7 +50,28 @@ const FIRE_ID=3;
          
          game.physics.arcade.overlap(player, firebonus, pick_fireball);
          game.physics.arcade.overlap(fireshoots,enemiesGroup,fire_shoots_enemy_overlap);
-    
+		 game.physics.arcade.overlap(fireshoots,piranaPipes,function(fire,pipe){
+            resetBullet(fire);
+        });
+
+        game.physics.arcade.overlap(fireshoots,ghosts,function(fireshoot,ghost){
+
+            fireshoot.kill();
+            ghost.animations.play('dead').onComplete.addOnce(function () {
+                ghost.kill();
+            }, this);    
+            ghost.kill();
+
+        });  
+
+      
+
+        game.physics.arcade.overlap(piranaGroup,ghosts,function(fireshoot,piranha){
+            fireshoot.kill();
+            piranha.kill();
+        });  
+
+
          /////////
       
 

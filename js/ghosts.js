@@ -42,8 +42,20 @@ function update_ghosts(){
             }   
         }
 
-        game.physics.arcade.overlap(player,ghost,ghostOverlap);
+        if(ghost.x<0){
+            ghost.body.velocity.x=-ghost.body.velocity.x;
+            ghost.x+=10;
+        }
+         if(ghost.y<=0){
+            ghost.body.velocity.y=-ghost.body.velocity.y;
+            ghost.y+=10;
+         }
+         else if(ghost.y>=800){
+            ghost.body.velocity.y=-ghost.body.velocity.y;
+            ghost.y-=10;
+         }
 
+        game.physics.arcade.overlap(player,ghost,ghostOverlap);
     }
         , this);
 }
