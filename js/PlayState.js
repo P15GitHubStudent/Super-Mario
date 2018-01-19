@@ -63,8 +63,8 @@ PlayState.prototype.create=function(){
       
       gameText.fixedToCamera=true;
 
-      debuggingText=game.add.text(0,15,'',{ fontSize: '10px', fill: '#ff1' });
-      debuggingText.fixedToCamera=true;
+     // debuggingText=game.add.text(0,15,'',{ fontSize: '10px', fill: '#ff1' });
+      //debuggingText.fixedToCamera=true;
 
        init_invisibleWalls();
 
@@ -120,13 +120,6 @@ PlayState.prototype.update=function(){
         playerhearts=5;
         game.state.start(GAME_OVER_STATE,true,false,score);
     }
-
-    developer=false;
-
-    if(!developer){
-        debuggingText.text=developer ? ' You are not in Developer Mode Press Escape To Disable':'Developer Mode Disabled Press Escape To Enable';
-    }
-
 
    update_piranas();
 
